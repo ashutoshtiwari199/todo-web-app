@@ -77,12 +77,7 @@ function deleteTodo(event){
 
 function saveItToLocalStorage(todo){
     //Checking if there exist anything before
-    let todos;
-    if(localStorage.getItem("todos") === null) {
-        todos = [];
-    }else {
         todos = JSON.parse(localStorage.getItem("todos"));
-    }
 
     todos.push(todo);
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -90,11 +85,7 @@ function saveItToLocalStorage(todo){
 
 function getTodos(){
     let todos;
-    if(localStorage.getItem("todos") === null) {
-        todos = [];
-    }else {
         todos = JSON.parse(localStorage.getItem("todos"));
-    }
 
     todos.forEach(todo => {
         //Creating Todo DIV
@@ -129,15 +120,22 @@ function getTodos(){
 }
 
 function removeFromLocalStorage(todo){
-    let todos;
-    if(localStorage.getItem("todos") === null) {
-        todos = [];
-    }else {
         todos = JSON.parse(localStorage.getItem("todos"));
-    }
 
-    const todoToBeRemoved = todo.children[0].innerText;
+     const todoToBeRemoved = todo.children[0].innerText;
     todos.splice(todos.indexOf(todoToBeRemoved), 1);
     localStorage.setItem("todos", JSON.stringify(todos));
 
 }
+
+
+// Set todos variable to localstorage
+
+function setVariableToLocalstorage(){
+    if(localStorage.getItem("todos") === null) {
+        var todos = [];
+        localStorage.setItem("todos",JSON.stringify(todos));
+    }else{
+        return 1;
+        }
+    }   
